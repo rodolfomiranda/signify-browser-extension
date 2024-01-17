@@ -19,6 +19,17 @@ chrome.runtime.onInstalled.addListener(function (object) {
   }
 });
 
+chrome.action.onClicked.addListener(
+  tab => {
+    console.log("action clicked")
+    console.log(tab)
+    chrome.scripting.executeScript({
+      target: {tabId: tab.id},
+      files: ['assets/index.tsx-loader-2949edf1.js']
+    });
+  }
+)
+
 // Handle messages
 chrome.runtime.onMessage.addListener(function (
   message: IMessage<any>,

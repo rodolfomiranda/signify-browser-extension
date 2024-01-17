@@ -31,6 +31,8 @@ window.addEventListener(
             type: "fetch-resource",
             subtype: "tab-signin",
           });
+          console.log("tabSigninResp received")
+
           insertDialog(
             data.isConnected,
             data.tabUrl,

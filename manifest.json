@@ -6,7 +6,6 @@
     "service_worker": "src/pages/background/index.ts"
   },
   "action": {
-    "default_popup": "src/pages/popup/index.html",
     "default_icon": {
       "32": "public/32_keri_logo.png",
       "128": "public/128_keri_logo.png"
@@ -19,11 +18,12 @@
   "permissions": [
     "activeTab",
     "storage",
-    "alarms"
+    "alarms",
+    "scripting"
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["http://www.es.com/*"],
       "run_at": "document_end",
       "js": ["src/pages/content/index.tsx"],
       "css": ["contentStyle.css"]
