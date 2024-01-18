@@ -10,6 +10,7 @@ import {
   getSigninsByDomain,
   deleteSigninByIndex,
 } from "@pages/background/signins-utils";
+import { action } from "webextension-polyfill";
 
 console.log("Background script loaded");
 
@@ -21,12 +22,16 @@ chrome.runtime.onInstalled.addListener(function (object) {
 
 chrome.action.onClicked.addListener(
   tab => {
-    console.log("action clicked")
-    console.log(tab)
+    // TODO avoid reinvection?
+    chrome.scripting.insertCSS({
+      target: {tabId: tab.id},
+      files: ['assets/index-1e59e7ed.css']
+    });
     chrome.scripting.executeScript({
       target: {tabId: tab.id},
       files: ['assets/index.tsx-loader-2949edf1.js']
     });
+    chrome.action.setPopup({popup: 'src/pages/popup/index.html'});
   }
 )
 

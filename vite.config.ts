@@ -4,7 +4,6 @@ import { defineConfig } from 'vite';
 import { crx, ManifestV3Export } from '@crxjs/vite-plugin';
 import merge from 'lodash/merge';
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
-
 import manifest from './manifest.json';
 import devManifest from './manifest.dev.json';
 import pkg from './package.json';
@@ -45,7 +44,7 @@ export default defineConfig({
       }
     }
     ),
-    nodePolyfills(),
+    nodePolyfills()
   ],
   publicDir,
   build: {
